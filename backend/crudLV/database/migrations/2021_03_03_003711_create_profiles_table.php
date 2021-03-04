@@ -19,7 +19,7 @@ class CreateProfilesTable extends Migration
             $table->unsignedBigInteger('persons_id')->unsigned();
             $table->foreign('persons_id')->references('id')->on('persons');
 
-            $table->string('ima_profile');
+            $table->text('ima_profile');
             $table->timestamps();
             $table->softDeletes();
         });
