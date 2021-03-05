@@ -41,7 +41,7 @@ Route::group([
 
         Route::get('/soft', [PersonsController::class, 'deleteSoft']);
 
-
+        Route::get('/users/{name}/{name2}', [PersonsController::class, 'search'] );
 
         Route::get('/profile', [ProfilesController::class, 'index']);
 

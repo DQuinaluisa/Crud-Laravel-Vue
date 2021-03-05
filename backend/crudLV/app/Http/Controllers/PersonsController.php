@@ -88,6 +88,26 @@ class PersonsController extends Controller
                     return response()->json($users);
     }
 
+    public function search ($name, $name2){
+        if($name2=='null'){
+            $user = DB::table('persons')
+                    ->join('profiles', 'persons.id', '=', 'profiles.persons_id' )
+                    ->where('first_name', 'like', $name."%")
+                    ->get();
+                    return response()->json($user);
+        }else {
+            $user = DB::table('persons')
+            ->join('profiles', 'persons.id', '=', 'profiles.persons_id' )
+            //->where('first_name', 'like', $name."%")
+            ->where([
+                ['first_name', 'like', $name."%"],
+                ['last_name', 'like', $name2."%"],
+            ])
+            ->get();
+            return response()->json($user);
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *
